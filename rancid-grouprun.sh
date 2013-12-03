@@ -22,11 +22,13 @@ echo $RG_ARRAY
 RG_SIZE=${#RG_ARRAY[@]}
 echo $RG_SIZE
 while [ $COUNTER2 -lt ${#RG_ARRAY[@]} ]; do
-    echo "rancid_run ${RG_ARRAY[$COUNTER2]}"
+    echo "rancid_run ${RG_ARRAY[$COUNTER2]} &"
     COUNTER2=$(($COUNTER2 + 1))
+    [[ $COUNTER2 -eq $GROUP_PAR ]] && wait
 done
 COUNTER2=0
 }
+
 
 while [  $COUNTER -lt $COUNTER_MAX ]; do
   if [ $COUNTER=$GROUP_PAR ]
